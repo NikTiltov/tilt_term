@@ -1,4 +1,4 @@
-pub struct Terminal<B>(B);
+pub struct Terminal<B: crate::Backend>(B);
 
 impl<B: crate::Backend> Terminal<B> {
   pub fn new() -> Self {

@@ -8,6 +8,12 @@ pub struct Cell {
   pub mods: CellMods,
 }
 
+impl Cell {
+  pub fn char(ch: char) -> Self {
+    Self::from(ch)
+  }
+}
+
 impl Default for Cell {
   fn default() -> Self {
     Self {
@@ -24,16 +30,6 @@ impl From<char> for Cell {
     Self {
       ch,
       ..Default::default()
-    }
-  }
-}
-
-impl From<Color> for Cell {
-  fn from(value: Color) -> Self {
-    if value == Color::Black {
-      Self::from('s')
-    } else {
-      Self::from('a')
     }
   }
 }

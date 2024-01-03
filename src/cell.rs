@@ -19,6 +19,15 @@ impl Default for Cell {
   }
 }
 
+impl From<char> for Cell {
+  fn from(ch: char) -> Self {
+    Self {
+      ch,
+      ..Default::default()
+    }
+  }
+}
+
 #[derive(Debug, Clone, Copy)]
 pub struct CellMods(u8);
 

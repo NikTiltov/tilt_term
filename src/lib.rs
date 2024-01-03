@@ -4,8 +4,10 @@ mod color;
 mod event;
 mod terminal;
 
-pub use backend::{Backend, Crossterm};
-pub use cell::*;
-pub use color::Color;
-pub use event::*;
-pub use terminal::Terminal;
+pub use self::{
+  backend::{Backend, Crossterm},
+  cell::*,
+  color::Color,
+  event::*,
+  terminal::Terminal,
+};

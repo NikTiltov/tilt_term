@@ -1,0 +1,20 @@
+#[derive(Debug, Clone, Copy, Hash, PartialEq, Eq)]
+pub enum KeyCode {
+  Char(char),
+  F(u8),
+  Backspace,
+  PageDown,
+  PageUp,
+  Backtab,
+  Insert,
+  Delete,
+  Enter,
+  Home,
+  End,
+  Tab,
+  Esc,
+  Right,
+  Left,
+  Down,
+  Up,
+}

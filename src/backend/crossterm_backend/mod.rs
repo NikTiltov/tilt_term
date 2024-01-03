@@ -12,15 +12,6 @@ pub struct Crossterm {
   stdout: std::io::Stdout,
 }
 
-impl Crossterm {
-  pub fn new() -> Self {
-    let mut stdout = std::io::stdout();
-    execute!(stdout, EnterAlternateScreen, Clear(ClearType::All)).unwrap();
-    terminal::enable_raw_mode().unwrap();
-    Self { stdout }
-  }
-}
-
 impl Drop for Crossterm {
   fn drop(&mut self) {
     terminal::disable_raw_mode().unwrap();
@@ -29,6 +20,13 @@ impl Drop for Crossterm {
 }
 
 impl crate::Backend for Crossterm {
+  fn new() -> Self {
+    let mut stdout = std::io::stdout();
+    execute!(stdout, EnterAlternateScreen, Clear(ClearType::All)).unwrap();
+    terminal::enable_raw_mode().unwrap();
+    Self { stdout }
+  }
+
   fn size(&self) -> (usize, usize) {
     let (col, row) = terminal::size().unwrap();
     (col as usize, row as usize)

@@ -1,8 +1,8 @@
 pub struct Terminal<B>(B);
 
 impl<B: crate::Backend> Terminal<B> {
-  pub fn new(backend: B) -> Self {
-    Self(backend)
+  pub fn new() -> Self {
+    Self(B::new())
   }
 }
 

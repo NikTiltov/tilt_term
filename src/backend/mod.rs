@@ -2,6 +2,7 @@ mod crossterm_backend;
 pub use crossterm_backend::Crossterm;
 
 pub trait Backend {
+  fn new() -> Self;
   fn size(&self) -> (usize, usize);
   fn cursor_show(&mut self);
   fn cursor_hide(&mut self);

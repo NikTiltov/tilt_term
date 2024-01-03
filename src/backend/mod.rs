@@ -7,7 +7,7 @@ pub trait Backend {
   fn cursor_hide(&mut self);
   fn set_cursor(&mut self, col: usize, row: usize);
   fn event(&mut self) -> crate::Event;
-  fn draw<'a>(&mut self, content: impl Iterator<Item = (usize, usize, &'a crate::Cell)>);
+  fn draw<'a>(&mut self, content: impl IntoIterator<Item = (usize, usize, &'a crate::Cell)>);
   fn clear(&mut self);
   fn flush(&mut self);
 }

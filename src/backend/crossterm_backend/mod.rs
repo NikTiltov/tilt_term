@@ -56,7 +56,7 @@ impl crate::Backend for Crossterm {
     }
   }
 
-  fn draw<'a>(&mut self, content: impl Iterator<Item = (usize, usize, &'a crate::Cell)>) {
+  fn draw<'a>(&mut self, content: impl IntoIterator<Item = (usize, usize, &'a crate::Cell)>) {
     for (x, y, cell) in content {
       queue!(
         self.stdout,

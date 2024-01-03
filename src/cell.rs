@@ -28,6 +28,16 @@ impl From<char> for Cell {
   }
 }
 
+impl From<Color> for Cell {
+  fn from(value: Color) -> Self {
+    if value == Color::Black {
+      Self::from('s')
+    } else {
+      Self::from('a')
+    }
+  }
+}
+
 #[derive(Debug, Clone, Copy)]
 pub struct CellMods(u8);
 

@@ -28,7 +28,7 @@ impl From<char> for Cell {
   }
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct CellMods(u8);
 
 impl CellMods {

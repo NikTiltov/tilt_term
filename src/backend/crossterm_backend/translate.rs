@@ -1,7 +1,7 @@
-use crate::{event::*, Color};
+use crate::{event::*, CellMods, Color};
 use crossterm::{
   event::{self as ct},
-  style::Color as ctColor,
+  style::{Attribute, Attributes, Color as ctColor},
 };
 
 impl TryFrom<ct::Event> for Event {
@@ -125,5 +125,33 @@ impl From<Color> for ctColor {
       Color::BrightCyan => ctColor::Cyan,
       Color::BrightWhite => ctColor::White,
     }
+  }
+}
+
+impl From<CellMods> for Attributes {
+  fn from(mods: CellMods) -> Self {
+    let mut attrs = Attributes::default();
+    if mods & CellMods::BOLD != CellMods::NONE {
+      attrs.set(Attribute::Bold);
+    }
+    if mods & CellMods::ITALIC != CellMods::NONE {
+      attrs.set(Attribute::Italic);
+    }
+    if mods & CellMods::UNDERLINED != CellMods::NONE {
+      attrs.set(Attribute::Underlined);
+    }
+    if mods & CellMods::UNDERCURLED != CellMods::NONE {
+      attrs.set(Attribute::Undercurled);
+    }
+    if mods & CellMods::UNDERDOTTED != CellMods::NONE {
+      attrs.set(Attribute::Bold);
+    }
+    if mods & CellMods::CROSSEDOUT != CellMods::NONE {
+      attrs.set(Attribute::CrossedOut);
+    }
+    if mods & CellMods::REVERSE != CellMods::NONE {
+      attrs.set(Attribute::Reverse);
+    }
+    attrs
   }
 }

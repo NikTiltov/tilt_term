@@ -8,12 +8,6 @@ pub struct Cell {
   pub mods: CellMods,
 }
 
-impl Cell {
-  pub fn char(ch: char) -> Self {
-    Self::from(ch)
-  }
-}
-
 impl Default for Cell {
   fn default() -> Self {
     Self {

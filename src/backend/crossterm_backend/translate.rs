@@ -130,6 +130,9 @@ impl From<Color> for ctColor {
 
 impl From<CellMods> for Attributes {
   fn from(mods: CellMods) -> Self {
+    if mods == CellMods::NONE {
+      return Attributes::from(Attribute::Reset);
+    }
     let mut attrs = Attributes::default();
     if mods & CellMods::BOLD != CellMods::NONE {
       attrs.set(Attribute::Bold);

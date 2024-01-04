@@ -68,7 +68,6 @@ impl crate::Backend for Crossterm {
         SetAttributes(cell.mods.into()),
       )
       .unwrap();
-      queue!(self.stdout, SetAttribute(Attribute::Reset)).unwrap();
     }
   }
 

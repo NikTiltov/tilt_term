@@ -3,7 +3,10 @@ mod translate;
 use crossterm::{
   cursor::{Hide, MoveTo, Show},
   event, execute, queue,
-  style::{Color, Print, SetAttributes, SetBackgroundColor, SetForegroundColor},
+  style::{
+    Attribute, Attributes, Color, Print, SetAttribute, SetAttributes, SetBackgroundColor,
+    SetForegroundColor,
+  },
   terminal::{self, Clear, ClearType, EnterAlternateScreen, LeaveAlternateScreen},
 };
 use std::io::Write;
@@ -64,7 +67,8 @@ impl crate::Backend for Crossterm {
         SetBackgroundColor(cell.fg.into()),
         SetAttributes(cell.mods.into()),
       )
-      .unwrap()
+      .unwrap();
+      queue!(self.stdout, SetAttribute(Attribute::Reset)).unwrap();
     }
   }
 

@@ -62,10 +62,10 @@ impl crate::Backend for Crossterm {
       queue!(
         self.stdout,
         MoveTo(x as u16, y as u16),
-        Print(cell.ch),
         SetForegroundColor(cell.fg.into()),
         SetBackgroundColor(cell.fg.into()),
         SetAttributes(cell.mods.into()),
+        Print(cell.ch),
       )
       .unwrap();
     }
